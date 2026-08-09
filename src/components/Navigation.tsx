@@ -8,14 +8,15 @@ const navItems = [
   { id: 'skills', label: 'Skills' },
   { id: 'work', label: 'Work' },
   { id: 'education', label: 'Education' },
-  { id: 'writing', label: 'Writing' },
-  { id: 'speaking', label: 'Speaking' },
+  { id: 'contact', label: 'Contact' },
 ]
 
 const socialLinks = [
-  { label: 'Mail', href: 'mailto:bruce@banner.com' },
-  { label: 'Instagram', href: 'https://instagram.com' },
-  { label: 'Vimeo', href: 'https://vimeo.com' },
+  { label: 'Mail', href: 'mailto:maabhay688@email.com' },
+  { label: 'GitHub', href: 'https://github.com/Abhay200-web' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/abhay-ma-506a7b224' },
+  { label: 'WhatsApp', href: 'https://wa.me/918848633024' },
+  { label: 'Instagram', href: 'https://www.instagram.com/ab.ha.y1/' },
 ]
 
 export function Navigation() {
