@@ -12,9 +12,12 @@ const skillCategories = [
       'HTML',
       'CSS',
       'Tailwind CSS',
+      'Three.js',
       'REST APIs',
       'MySQL',
       'PostgreSQL',
+      'Boto3',
+      'Powerbase',
       'Git',
     ],
   },
@@ -32,11 +35,26 @@ const skillCategories = [
   {
     category: 'TOOLS',
     skills: [
+      'Cursor IDE',
+      'Antigravity IDE',
+      'Claude Code',
+      'Claude Design',
+      'Stripe',
+      'PayPal',
+      'Razorpay',
+      'Cloudflare',
+      'Cloudflare D1',
+      'Docker',
+      'Render',
+      'AWS',
+      'S3',
+      'R2',
+      'MCP',
+      'Git',
       'GitHub',
-      'Cursor',
-      'VS Code',
-      'Figma',
+      'WordPress',
       'Postman',
+      'VS Code',
     ],
   },
 ]
@@ -50,7 +68,7 @@ const fadeInUp = {
 
 export function Skills() {
   return (
-    <section id="skills" className="section-padding bg-[#0d0d0d]">
+    <section id="skills" className="section-padding bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto">
         {/* Section Label */}
         <motion.div {...fadeInUp} className="mb-16">

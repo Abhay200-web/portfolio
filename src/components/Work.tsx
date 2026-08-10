@@ -2,44 +2,25 @@ import { motion } from 'framer-motion'
 
 const experiences = [
   {
-    title: 'Senior Photographer & Creative Director',
-    company: 'National Geographic',
-    location: 'Washington D.C.',
-    period: '2020 — Present',
-    description: 'Leading visual storytelling projects across five continents. Responsible for conceptualizing and executing long-form documentary series, managing a team of 8 photographers, and establishing visual guidelines for flagship publications.',
-    skills: ['Documentary Photography', 'Team Leadership', 'Art Direction', 'Visual Storytelling', 'Project Management'],
+    title: 'Jr. Full-Stack Developer',
+    company: 'C Design Pvt. Ltd.',
+    period: '2026 — Present',
+    description: 'Developing web applications and digital platforms with a focus on Python full-stack development, frontend interfaces and scalable product functionality.',
+    skills: ['Python', 'Full-Stack Development', 'Frontend Interfaces', 'Web Applications', 'Scalable Architecture'],
   },
   {
-    title: 'Staff Photographer',
-    company: 'The New York Times',
-    location: 'New York, NY',
-    period: '2018 — 2020',
-    description: 'Covered breaking news, features, and editorial assignments for print and digital platforms. Specialized in portrait photography and human interest stories. Work featured on front page 47 times.',
-    skills: ['Editorial Photography', 'Breaking News', 'Portrait Photography', 'Deadline Management', 'Photo Editing'],
+    title: 'Python Full-Stack Developer',
+    company: 'One Team Solutions',
+    period: '2025',
+    description: 'Worked on full-stack web development using Python, Django, React and database technologies, contributing to application development across frontend and backend systems.',
+    skills: ['Python', 'Django', 'React', 'Database Technologies', 'Full-Stack Web Dev'],
   },
   {
-    title: 'Creative Director',
-    company: 'Time Magazine',
-    location: 'New York, NY',
-    period: '2016 — 2018',
-    description: 'Oversaw visual direction for special issues and cover stories. Collaborated with editors to develop compelling visual narratives. Managed relationships with contributing photographers worldwide.',
-    skills: ['Creative Direction', 'Visual Strategy', 'Team Coordination', 'Brand Identity', 'Magazine Publishing'],
-  },
-  {
-    title: 'Staff Photographer',
-    company: 'VII Photo Agency',
-    location: 'Berlin, Germany',
-    period: '2014 — 2016',
-    description: 'Worked on long-term documentary projects focusing on social issues and human rights. Assignments included coverage in conflict zones and humanitarian crises across Europe and Middle East.',
-    skills: ['Documentary', 'Conflict Photography', 'Humanitarian Coverage', 'Long-form Projects', 'Risk Assessment'],
-  },
-  {
-    title: 'Junior Photographer',
-    company: 'Magnum Photos',
-    location: 'London, UK',
-    period: '2012 — 2014',
-    description: 'Assisted senior photographers on international assignments. Developed technical skills in both digital and analog photography. First solo exhibition at the agency gallery in 2013.',
-    skills: ['Analog Photography', 'Digital Processing', 'Studio Lighting', 'Archive Management', 'Exhibition Curation'],
+    title: 'UI/UX Design Intern',
+    company: 'IronHub Infotech',
+    period: '2024',
+    description: 'Worked on user interface and user experience design, creating layouts, wireframes and interface concepts focused on usability and visual consistency.',
+    skills: ['UI/UX Design', 'Wireframing', 'Layout Design', 'Interface Concepts', 'Usability'],
   },
 ]
 
@@ -52,7 +33,7 @@ const fadeInUp = {
 
 export function Work() {
   return (
-    <section id="work" className="section-padding">
+    <section id="work" className="section-padding bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto">
         {/* Section Title */}
         <motion.div {...fadeInUp} className="mb-16">
@@ -86,9 +67,6 @@ export function Work() {
                   </h3>
                   <p className="text-base lg:text-lg text-gray-400">
                     {exp.company}
-                  </p>
-                  <p className="text-sm text-gray-600 mt-2">
-                    {exp.location}
                   </p>
                 </div>
 

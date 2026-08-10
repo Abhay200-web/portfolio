@@ -6,8 +6,9 @@ import { cn } from '@/lib/utils'
 const navItems = [
   { id: 'about', label: 'About' },
   { id: 'skills', label: 'Skills' },
+  { id: 'what-i-do', label: 'What I Do' },
   { id: 'work', label: 'Work' },
-  { id: 'education', label: 'Education' },
+  { id: 'education', label: 'Certifications' },
   { id: 'contact', label: 'Contact' },
 ]
 
@@ -19,7 +20,11 @@ const socialLinks = [
   { label: 'Instagram', href: 'https://www.instagram.com/ab.ha.y1/' },
 ]
 
-export function Navigation() {
+interface NavigationProps {
+  isLoading?: boolean
+}
+
+export function Navigation({ isLoading = false }: NavigationProps) {
   const activeSection = useActiveSection()
   const isVisible = useScrollVisibility()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -35,7 +40,10 @@ export function Navigation() {
   return (
     <>
       {/* Mobile Header - Only visible on mobile */}
-      <div className="fixed top-0 left-0 right-0 z-50 p-6 flex justify-between items-start md:hidden">
+      <div className={cn(
+        "fixed top-0 left-0 right-0 z-50 p-6 flex justify-between items-start md:hidden transition-opacity duration-700",
+        isLoading ? "opacity-0 pointer-events-none" : "opacity-100"
+      )}>
         {/* Menu Button - Left */}
         <div className="relative">
           <button
@@ -85,7 +93,10 @@ export function Navigation() {
       </div>
 
       {/* Desktop Social Links - Fixed Top Right (hidden on mobile) */}
-      <div className="hidden md:block fixed top-0 right-0 z-50 p-6 md:p-10">
+      <div className={cn(
+        "hidden md:block fixed top-0 right-0 z-50 p-6 md:p-10 transition-opacity duration-700",
+        isLoading ? "opacity-0 pointer-events-none" : "opacity-100"
+      )}>
         <div className="flex items-center gap-6 justify-end">
           {socialLinks.map((link) => (
             <a
@@ -105,7 +116,7 @@ export function Navigation() {
       <nav 
         className={cn(
           'hidden md:block fixed bottom-0 right-0 z-50 p-6 md:p-10 transition-all duration-500',
-          isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8 pointer-events-none'
+          !isLoading && isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8 pointer-events-none'
         )}
       >
         <div className="flex flex-col items-end gap-3">

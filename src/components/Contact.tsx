@@ -37,7 +37,7 @@ const fadeInUp = {
 
 export function Contact() {
   return (
-    <section id="contact" className="section-padding">
+    <section id="contact" className="section-padding bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto">
         {/* Section Label */}
         <motion.div {...fadeInUp} className="mb-16">
@@ -84,16 +84,16 @@ export function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.08 }}
-              className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-gray-800 py-6 group hover:bg-gray-900/40 transition-colors px-4 -mx-4 rounded-sm"
+              className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-gray-800 py-6 group"
             >
               <span className="text-xs text-gray-500 tracking-widest font-mono uppercase mb-1 sm:mb-0">
                 {item.label}
               </span>
               <div className="flex items-center gap-2">
-                <span className="text-base md:text-lg text-gray-300 group-hover:text-white transition-colors">
+                <span className="text-base md:text-lg text-gray-300">
                   {item.value}
                 </span>
-                <span className="text-gray-500 group-hover:text-white transition-colors transform group-hover:translate-x-1 group-hover:-translate-y-1 duration-300">
+                <span className="text-gray-500 transform group-hover:translate-x-1 group-hover:-translate-y-1 duration-300">
                   ↗
                 </span>
               </div>

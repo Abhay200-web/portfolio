@@ -1,6 +1,10 @@
 import { motion } from 'framer-motion'
 
-export function Hero() {
+interface HeroProps {
+  isLoading?: boolean
+}
+
+export function Hero({ isLoading = false }: HeroProps) {
   return (
     <section className="relative h-screen w-full overflow-hidden">
       {/* Background Image - Responsive */}
@@ -20,8 +24,8 @@ export function Hero() {
           {/* Typography */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
+            animate={isLoading ? { opacity: 0, y: 40 } : { opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
           >
             <h1 className="font-display leading-none tracking-tighter text-[15vw] sm:text-[12vw] md:text-hero">
               <span className="block text-white">ABHAY</span>
@@ -31,8 +35,8 @@ export function Hero() {
             
             <motion.p
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
+              animate={isLoading ? { opacity: 0 } : { opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
               className="mt-6 md:mt-8 text-sm sm:text-base text-white/80 max-w-sm md:max-w-md leading-relaxed"
             >
               Full-Stack Software Engineer specializing in modern web applications, performant architecture, and interactive digital experiences.

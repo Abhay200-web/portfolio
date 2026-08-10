@@ -9,7 +9,7 @@ const fadeInUp = {
 
 export function About() {
   return (
-    <section id="about" className="section-padding">
+    <section id="about" className="section-padding bg-[#161616] border-y border-neutral-800/40">
       <div className="max-w-7xl mx-auto">
         {/* Section Label */}
         <motion.div {...fadeInUp} className="mb-16">
@@ -49,10 +49,10 @@ export function About() {
           {...fadeInUp}
           className="mb-24 lg:mb-32"
         >
-          <h2 className="font-display text-[7vw] lg:text-section leading-none tracking-tight text-gray-300">
+          <h2 className="font-display text-[7vw] lg:text-section leading-[0.98] tracking-tight text-gray-300">
             "BUILDING PRODUCTS THAT ARE<br />
-            <span className="text-white underline underline-offset-8">NOT ONLY FUNCTIONAL</span>,<br />
-            BUT ALSO SIMPLE AND INTUITIVE."
+            <span className="text-white underline underline-offset-4 lg:underline-offset-8">NOT ONLY FUNCTIONAL</span>,<br />
+            <span className="inline-block mt-2 sm:mt-3 lg:mt-4">BUT ALSO SIMPLE AND INTUITIVE."</span>
           </h2>
           <p className="mt-6 text-sm text-gray-500 tracking-widest uppercase">
             CORE PHILOSOPHY & PRODUCT VISION
