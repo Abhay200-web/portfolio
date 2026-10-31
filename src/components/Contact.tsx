@@ -1,30 +1,47 @@
 import { motion } from 'framer-motion'
+import { Mail, Instagram, Github, Linkedin } from 'lucide-react'
+
+const WhatsAppIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.04 21.8a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.27c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 7c0 5.45-4.44 9.89-9.9 9.89zM20.5 3.5A11.8 11.8 0 0 0 12.04 0C5.5 0 .16 5.33.16 11.88c0 2.09.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.85 11.85 0 0 0 5.68 1.45h.01c6.54 0 11.88-5.33 11.88-11.88 0-3.17-1.23-6.15-3.43-8.42z" />
+  </svg>
+)
 
 const contactLinks = [
   {
-    label: 'EMAIL',
-    value: 'maabhay688@email.com',
+    label: 'Email',
+    icon: Mail,
     href: 'mailto:maabhay688@email.com',
+    title: 'Email',
+    message: 'Click and send an email to Abhay and get a free quote.',
   },
   {
-    label: 'WHATSAPP',
-    value: '+91 8848633024',
+    label: 'WhatsApp',
+    icon: WhatsAppIcon,
     href: 'https://wa.me/918848633024',
+    title: 'WhatsApp',
+    message: 'Chat with Abhay directly. Quick replies and a free quote.',
   },
   {
-    label: 'INSTAGRAM',
-    value: 'instagram.com/ab.ha.y1',
+    label: 'Instagram',
+    icon: Instagram,
     href: 'https://www.instagram.com/ab.ha.y1/',
+    title: 'Instagram',
+    message: 'Follow my work and say hi in the DMs.',
   },
   {
-    label: 'GITHUB',
-    value: 'github.com/Abhay200-web',
+    label: 'GitHub',
+    icon: Github,
     href: 'https://github.com/Abhay200-web',
+    title: 'GitHub',
+    message: 'Browse my projects and source code.',
   },
   {
-    label: 'LINKEDIN',
-    value: 'linkedin.com/in/abhay-ma-506a7b224',
+    label: 'LinkedIn',
+    icon: Linkedin,
     href: 'https://www.linkedin.com/in/abhay-ma-506a7b224',
+    title: 'LinkedIn',
+    message: "Let's connect professionally.",
   },
 ]
 
@@ -72,33 +89,47 @@ export function Contact() {
           </h3>
         </motion.div>
 
-        {/* Contact Links List */}
-        <div className="space-y-0 max-w-3xl border-t border-gray-800">
-          {contactLinks.map((item, index) => (
-            <motion.a
-              key={item.label}
-              href={item.href}
-              target={item.href.startsWith('mailto:') ? undefined : '_blank'}
-              rel={item.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.08 }}
-              className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-gray-800 py-6 group"
-            >
-              <span className="text-xs text-gray-500 tracking-widest font-mono uppercase mb-1 sm:mb-0">
-                {item.label}
-              </span>
-              <div className="flex items-center gap-2">
-                <span className="text-base md:text-lg text-gray-300">
-                  {item.value}
-                </span>
-                <span className="text-gray-500 transform group-hover:translate-x-1 group-hover:-translate-y-1 duration-300">
-                  ↗
-                </span>
-              </div>
-            </motion.a>
-          ))}
+        {/* Contact Icons */}
+        <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-8 pb-16 border-t border-gray-800 max-w-3xl">
+          {contactLinks.map((item, index) => {
+            const Icon = item.icon
+            const isMail = item.href.startsWith('mailto:')
+            return (
+              <motion.div
+                key={item.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.08 }}
+                className="relative group"
+              >
+                <a
+                  href={item.href}
+                  target={isMail ? undefined : '_blank'}
+                  rel={isMail ? undefined : 'noopener noreferrer'}
+                  aria-label={item.label}
+                  className="flex items-center justify-center w-14 h-14 rounded-full border border-gray-700 text-gray-300 bg-white/[0.03] transition-all duration-300 hover:text-white hover:border-white/40 hover:bg-white/10 focus-visible:text-white focus-visible:border-white/40 focus-visible:outline-none"
+                >
+                  <Icon className="w-6 h-6" />
+                </a>
+
+                {/* Glass popup */}
+                <div
+                  role="tooltip"
+                  className="pointer-events-none absolute z-20 w-60 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl p-4 shadow-[0_8px_32px_rgba(0,0,0,0.5)] ring-1 ring-inset ring-white/10
+                    opacity-0 transition-all duration-300
+                    top-full left-0 mt-3 translate-y-2 group-hover:translate-y-0 group-focus-within:translate-y-0
+                    sm:top-1/2 sm:left-full sm:mt-0 sm:ml-4 sm:-translate-y-1/2 sm:-translate-x-2 sm:group-hover:translate-x-0 sm:group-focus-within:translate-x-0 sm:group-hover:-translate-y-1/2 sm:group-focus-within:-translate-y-1/2
+                    group-hover:opacity-100 group-focus-within:opacity-100"
+                >
+                  <p className="text-xs font-mono tracking-widest uppercase text-gray-300 mb-1">
+                    {item.title}
+                  </p>
+                  <p className="text-sm text-white leading-snug">{item.message}</p>
+                </div>
+              </motion.div>
+            )
+          })}
         </div>
 
         {/* Footer */}
