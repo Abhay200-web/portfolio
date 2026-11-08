@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion'
 
 const certificates = [
   {
@@ -37,56 +37,36 @@ const certificates = [
   },
 ]
 
-export function Education() {
-  const containerRef = useRef<HTMLDivElement>(null)
+function CertificateFolder({
+  cert,
+  index,
+  total,
+  scrollYProgress,
+}: {
+  cert: (typeof certificates)[number]
+  index: number
+  total: number
+  scrollYProgress: MotionValue<number>
+}) {
+  // Extended scroll ranges with dedicated hold/pause duration for reading
+  const step = 0.30
+  const start = index * step
+  const openEnd = start + 0.08    // Opening phase
+  const holdEnd = openEnd + 0.16   // Dedicated reading hold phase
+  const slideEnd = holdEnd + 0.08  // Slide away phase
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end end'],
-  })
+  // Smooth transforms with reading pause
+  const innerCardHeight = useTransform(scrollYProgress, [start, openEnd], [0, 190])
+  const innerOpacity = useTransform(scrollYProgress, [start + 0.02, openEnd], [0, 1])
+  const cardY = useTransform(scrollYProgress, [holdEnd, slideEnd], [0, -650])
+  const cardOpacity = useTransform(scrollYProgress, [holdEnd + 0.03, slideEnd], [1, 0])
 
   return (
-    <section id="education" className="relative section-padding bg-[#161616] text-black border-y border-neutral-800/40">
-      <div className="max-w-7xl mx-auto mb-12">
-        {/* Section Header */}
-        <div className="mb-4">
-          <span className="text-xs font-mono text-neutral-500 tracking-widest uppercase">
-            Official Credentials
-          </span>
-          <div className="w-8 h-px bg-neutral-700 mt-2" />
-        </div>
-
-        <h2 className="font-display text-[10vw] lg:text-section leading-none tracking-tight text-white uppercase">
-          CERTIFICATIONS
-        </h2>
-      </div>
-
-      {/* Sticky Folder Deck Container */}
-      <div ref={containerRef} className="relative h-[400vh] w-full">
-        <div className="sticky top-0 min-h-screen flex flex-col items-center justify-center px-4 md:px-8 py-8">
-          <div className="w-full max-w-4xl relative flex flex-col items-center [perspective:1200px]">
-            
-            {certificates.map((cert, index) => {
-              // Extended scroll ranges with dedicated hold/pause duration for reading
-              const step = 0.30
-              const start = index * step
-              const openEnd = start + 0.08    // Opening phase
-              const holdEnd = openEnd + 0.16   // Dedicated reading hold phase
-              const slideEnd = holdEnd + 0.08  // Slide away phase
-
-              // Smooth transforms with reading pause
-              const innerCardHeight = useTransform(scrollYProgress, [start, openEnd], [0, 190])
-              const innerOpacity = useTransform(scrollYProgress, [start + 0.02, openEnd], [0, 1])
-              const cardY = useTransform(scrollYProgress, [holdEnd, slideEnd], [0, -650])
-              const cardOpacity = useTransform(scrollYProgress, [holdEnd + 0.03, slideEnd], [1, 0])
-
-              return (
                 <motion.div
-                  key={cert.code}
                   style={{
-                    y: index === certificates.length - 1 ? 0 : cardY,
-                    opacity: index === certificates.length - 1 ? 1 : cardOpacity,
-                    zIndex: certificates.length - index,
+                    y: index === total - 1 ? 0 : cardY,
+                    opacity: index === total - 1 ? 1 : cardOpacity,
+                    zIndex: total - index,
                   }}
                   className="w-full relative mb-[-40px] transition-shadow duration-300"
                 >
@@ -152,8 +132,47 @@ export function Education() {
 
                   </div>
                 </motion.div>
-              )
-            })}
+  )
+}
+
+export function Education() {
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end end'],
+  })
+
+  return (
+    <section id="education" className="relative section-padding bg-[#161616] text-black border-y border-neutral-800/40">
+      <div className="max-w-7xl mx-auto mb-12">
+        {/* Section Header */}
+        <div className="mb-4">
+          <span className="text-xs font-mono text-neutral-500 tracking-widest uppercase">
+            Official Credentials
+          </span>
+          <div className="w-8 h-px bg-neutral-700 mt-2" />
+        </div>
+
+        <h2 className="font-display text-[10vw] lg:text-section leading-none tracking-tight text-white uppercase">
+          CERTIFICATIONS
+        </h2>
+      </div>
+
+      {/* Sticky Folder Deck Container */}
+      <div ref={containerRef} className="relative h-[400vh] w-full">
+        <div className="sticky top-0 min-h-screen flex flex-col items-center justify-center px-4 md:px-8 py-8">
+          <div className="w-full max-w-4xl relative flex flex-col items-center [perspective:1200px]">
+            
+            {certificates.map((cert, index) => (
+              <CertificateFolder
+                key={cert.code}
+                cert={cert}
+                index={index}
+                total={certificates.length}
+                scrollYProgress={scrollYProgress}
+              />
+            ))}
 
             {/* Manila Folder Deck Base Cover */}
             <div className="w-full bg-[#DFD9CB] border border-[#CBC5B6] rounded-b-md px-6 py-3.5 flex justify-between items-center text-xs font-mono text-neutral-800 shadow-md relative z-0 mt-1">
