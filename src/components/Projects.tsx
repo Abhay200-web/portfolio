@@ -219,6 +219,15 @@ function ProjectFolder({
                   >
                     VISIT LIVE SITE ↗
                   </a>
+                  {!project.github && (
+                    <span className="inline-flex items-center gap-2 text-[10px] font-mono tracking-widest px-3 py-2 rounded border border-dashed border-neutral-700 text-neutral-500">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <rect x="4" y="11" width="16" height="10" rx="2" />
+                        <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+                      </svg>
+                      CLIENT WORK · PRIVATE SOURCE
+                    </span>
+                  )}
                   {project.github && (
                     <a
                       href={project.github}
