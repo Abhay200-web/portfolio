@@ -10,7 +10,7 @@ const projects = [
     title: '3D Assets Marketplace',
     url: 'https://assethive3d.com',
     host: 'assethive3d.com',
-    image: '/projects/assethive3d.jpg',
+    image: '/projects/assethive3d.png',
     role: 'FULL-STACK DEVELOPER',
     description:
       'A 3D asset marketplace in the vein of Sketchfab and TurboSquid. It sells high, mid and low poly game-ready models, plus plugins that automate workflows in 3ds Max, Blender, Maya and other 3D tools.',
@@ -26,7 +26,7 @@ const projects = [
     title: 'Architectural Services Landing Page',
     url: 'https://www.outsourcingcadworks.com/campaigns-for-architectural-services/',
     host: 'outsourcingcadworks.com',
-    image: '/projects/outsourcingcadworks.jpg',
+    image: '/projects/outsourcingcadworks.png',
     role: 'FRONTEND DEVELOPER',
     description:
       'A conversion-focused one-page campaign site for an architectural and CAD drafting company, built to present their services and capture leads.',
