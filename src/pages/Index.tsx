@@ -6,7 +6,7 @@ import { About } from '@/components/About'
 import { Skills } from '@/components/Skills'
 import { WhatIDo } from '@/components/WhatIDo'
 import { Work } from '@/components/Work'
-import { Education } from '@/components/Education'
+import { Projects } from '@/components/Projects'
 import { Contact } from '@/components/Contact'
 import { Preloader } from '@/components/Preloader'
 
@@ -24,7 +24,7 @@ export default function Index() {
         <Skills />
         <WhatIDo />
         <Work />
-        <Education />
+        <Projects />
         <Contact />
       </main>
     </div>
