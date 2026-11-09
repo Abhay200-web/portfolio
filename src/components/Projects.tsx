@@ -99,7 +99,7 @@ function BrowserPreview({ project }: { project: Project }) {
             alt={`${project.title} screenshot`}
             loading="lazy"
             onError={() => setImgFailed(true)}
-            className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
+            className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
           />
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-neutral-600 font-mono">
@@ -138,7 +138,7 @@ function ProjectFolder({
   const holdEnd = openEnd + 0.2
   const slideEnd = holdEnd + 0.1
 
-  const openHeight = isMobile ? 600 : 380
+  const openHeight = isMobile ? 660 : 380
   const innerCardHeight = useTransform(scrollYProgress, [start, openEnd], [0, openHeight])
   const innerOpacity = useTransform(scrollYProgress, [start + 0.02, openEnd], [0, 1])
   const cardY = useTransform(scrollYProgress, [holdEnd, slideEnd], [0, -800])
@@ -157,7 +157,7 @@ function ProjectFolder({
       {/* Folder tab */}
       <div className={`flex w-full px-4 ${project.tabAlign}`}>
         <div className="bg-[#E4DFD3] border-t border-x border-[#CBC5B6] text-black text-xs font-mono px-6 py-2 rounded-t-md flex items-center gap-3 shadow-md">
-          <span className="bg-black text-white text-[10px] font-mono px-2 py-0.5 rounded-sm">
+          <span className="bg-black text-white text-[10px] font-mono px-2 py-0.5 shrink-0 whitespace-nowrap rounded-sm">
             {project.code}
           </span>
           <span className="font-bold tracking-wider uppercase">{project.tabLabel}</span>
@@ -180,8 +180,8 @@ function ProjectFolder({
             <LiveBadge />
           </div>
 
-          <div className="flex-1 min-h-0 grid grid-cols-1 md:grid-cols-[1.15fr_1fr] gap-4 md:gap-6 pt-4">
-            <div className="min-h-[200px] md:min-h-0">
+          <div className="flex-1 min-h-0 grid grid-cols-1 content-start md:content-stretch md:grid-cols-[1.15fr_1fr] gap-4 md:gap-6 pt-4">
+            <div className="aspect-[16/10] md:aspect-auto md:min-h-0 shrink-0">
               <BrowserPreview project={project} />
             </div>
 
@@ -209,7 +209,7 @@ function ProjectFolder({
               </div>
 
               <div className="pt-3 mt-3 border-t border-neutral-800">
-                <p className="text-[10px] font-mono text-neutral-500 mb-3">{project.infra}</p>
+                <p className="hidden md:block text-[10px] font-mono text-neutral-500 mb-3">{project.infra}</p>
                 <div className="flex flex-wrap gap-2">
                   <a
                     href={project.url}
